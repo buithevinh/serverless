@@ -1,6 +1,6 @@
 # serverless.yml
  
-service: serverless
+service: aws-node-express-api
  
 provider:
   name: aws
