@@ -1,0 +1,35 @@
+{
+  "name": "serverless",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buithevinh/serverless.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/buithevinh/serverless/issues"
+  },
+  "homepage": "https://github.com/buithevinh/serverless#readme",
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^3.18.0",
+    "add": "^2.0.6",
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "jimp": "^0.16.1",
+    "multer": "^1.4.4",
+    "tensorflow-lambda": "^1.0.2",
+    "tfjs-lambda": "0.0.14",
+    "netlify-lambda": "^1.6.3",
+    "serverless-http": "^2.3.0",
+    "body-parser": "^1.19.0",
+  }
+}

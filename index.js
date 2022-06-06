@@ -3,10 +3,31 @@ const metadataURL = 'https://teachablemachine.withgoogle.com/models/xKlYuxUch/' 
 const loadTf = require('tfjs-lambda');
 const { default: axios } = require('axios');
 const Jimp = require("jimp");
-const getTagging = (event, context, callback) => {
+const express = require('express');
+const path = require('path');
+const serverless = require('serverless-http');
+const app = express();
+const bodyParser = require('body-parser');
+const router = express.Router();
+router.get('/', (req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+  res.write('<h1>Hello from Express.js!</h1>');
+  res.end();
+});
+
+
+router.post('/get-tagging', upload.single('file'), async (req, res) => {
   const time = new Date().getTime();
-  const  tf = await loadTf()
-  const  model = await tf.loadLayersModel(modelURL); 
+  res.json({
+    status: 200,
+    time: time
+  });
+  if(!tf) {
+    tf = await loadTf()
+  }
+  if(!model) {
+    model = await tf.loadLayersModel(modelURL);
+  }
   const metadata = await axios.get(metadataURL);
   const fBuffer = req.file.buffer;
   const image = await Jimp.read(fBuffer);
@@ -46,7 +67,12 @@ const getTagging = (event, context, callback) => {
       })
     }
   }
-  const response = { statusCode: 200, body: JSON.stringify(classify) };
-  callback(null, response);
-}
-module.exports = getTagging;
+
+  client.set(time, JSON.stringify(classify));
+})
+
+app.use('/.netlify/functions/server', router);
+
+const port = process.env.port || 8000;
+app.listen(port, () => console.log('Local app listening on port 8000!'));
+module.exports.handler = serverless(app);
