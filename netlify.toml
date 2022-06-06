@@ -1,16 +1,4 @@
 # serverless.yml
- 
-service: aws-node-express-api
- 
-provider:
-  name: aws
-  runtime: nodejs6.10
-  stage: dev
-  region: us-east-1
- 
-functions:
-  app:
-    handler: index.getTagging
-    events:
-      - http: ANY /
-      - http: 'ANY {proxy+}'
+[build]
+  command: "npm install && npm run build"
+  functions: "functions"
