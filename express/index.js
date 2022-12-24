@@ -73,7 +73,7 @@ router.post('/get-tagging', upload.single('file'), async (req, res) => {
 app.use(bodyParser.json());
 app.use('/.netlify/functions/server', router);
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
-const port = process.env.port || 8000;
-app.listen(port, () => console.log('Local app listening on port 8000!'));
+// const port = process.env.port || 8000;
+// app.listen(port, () => console.log('Local app listening on port 8000!'));
 module.exports = app;
 module.exports.handler = serverless(app);
