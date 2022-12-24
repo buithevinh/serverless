@@ -1,3 +1,4 @@
+'use strict';
 const modelURL = 'https://teachablemachine.withgoogle.com/models/xKlYuxUch/' + 'model.json';
 const metadataURL = 'https://teachablemachine.withgoogle.com/models/xKlYuxUch/' + 'metadata.json';
 const loadTf = require('tfjs-lambda');
